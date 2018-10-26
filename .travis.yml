@@ -1,11 +1,10 @@
 language: node_js
- node_js: node
- services:
-     - mongodb
+node_js: node
+services: mongodb
 deploy:
   provider: heroku
   api_key:
     secure: MhYwJ2iUz4ReJ3rU8fdVgYWZAE9cX6r3v70zfXmvl2fGmNR7Wml3mfI6baAw9ffcl+B7i5u/+1Hf+ceaSATP03mCVxf9ajPO+nZtlMGiy2DwvwqEDYU2qy/bU1N/gQbR3flnVRx0UifmfEoM896DoiMuyZ6Ph0w6uODwo+5LcRQCYoF6NTOrICLsmX7hIkzqmGzhk84VnIoQ5ClhLxHpaW4i79V5jVOdMydKDbims/FQc6Imuuvu4duakM3glNWg1WZT0Fr28AoWWSl3OjhxhVUPr6qtodJZ/XPBMKV/e38l5k0jMal6dR3fGZ7rbIfW7rJzl/5oO+cjHfXzMHOg2xaSfl6y+WAYjtBM207F2Da4yx+SLdgrr+MjJdPqsX8DdY3gP1kakWdCgeJ4uhG64zd+NNJ85h0R14HzBwZfpbRQ4IOEAEDQGEPR5BT7nAN9bwjS7Q4ktWPKnzMFrZP7hCdmAEWu6hpyLt2wyj04lcgc5tLU7ZlrBy2dcpeo3jEI2Nw9upWpuLeJBAo7Yg0kd8P7WmFdBvXGY22iwxllsxDtSDJ8+xTcuDW1bZKI3srhvzVzWJxB3OanqEFxL6FnujZwZCKdskaCSuixkl0i5TdBLovrkrnMZarTK3eG1sWo7n49KyOiD+AI3t8TuR/+xmemE0mQwNJLIiSlMaQebQQ=
-  app: powerful-coast-78779
+  app: https://powerful-coast-78779.herokuapp.com/
   on:
     repo: bhasshaw/react-capstone-api
