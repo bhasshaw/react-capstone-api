@@ -49,17 +49,8 @@ describe('Protected endpoint', function () {
       return chai
         .request(app)
         .get('/api/protected')
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
-          expect(res).to.have.status(401);
-        });
+        .then((res) =>
+          expect(res).to.have.status(401));
     });
 
     it('Should reject requests with an invalid token', function () {
@@ -80,17 +71,8 @@ describe('Protected endpoint', function () {
         .request(app)
         .get('/api/protected')
         .set('Authorization', `Bearer ${token}`)
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
-          expect(res).to.have.status(401);
-        });
+        .then((res) =>
+          expect(res).to.have.status(401));
     });
     it('Should reject requests with an expired token', function () {
       const token = jwt.sign(
@@ -113,17 +95,8 @@ describe('Protected endpoint', function () {
         .request(app)
         .get('/api/protected')
         .set('authorization', `Bearer ${token}`)
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
-          expect(res).to.have.status(401);
-        });
+        .then((res) =>
+          expect(res).to.have.status(401));
     });
     it('Should send protected data', function () {
       const token = jwt.sign(
