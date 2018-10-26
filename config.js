@@ -1,4 +1,5 @@
 'use strict';
+
 // exports.CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://sheltered-hamlet-99872.herokuapp.com/';
 exports.DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost/react-capstone-api';
 exports.TEST_DATABASE_URL = process.env.TEST_DATABASE_URL || 'mongodb://localhost/react-capstone-api-test';
