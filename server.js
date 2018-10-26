@@ -5,11 +5,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
-// const cors = require('cors');
+const cors = require('cors');
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
-// const {CLIENT_ORIGIN} = require('./config');
+const {CLIENT_ORIGIN} = require('./config');
 
 
 mongoose.Promise = global.Promise;
@@ -18,16 +18,16 @@ const { PORT, DATABASE_URL } = require('./config');
 
 const app = express();
 
-// app.use(
-//   cors({
-//       origin: CLIENT_ORIGIN
-//   })
-// );
-
 // Logging
 app.use(morgan('common'));
 
 // CORS
+app.use(
+  cors({
+      origin: CLIENT_ORIGIN
+  })
+);
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
