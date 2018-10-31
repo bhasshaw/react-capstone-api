@@ -7,12 +7,20 @@ const dateSchema = mongoose.Schema({
     user: {
         type: String
     },
+    street: {
+        type: String,
+        required: true
+    },
     city: {
         type: String,
         required: true
     },
-    parkName: {
+    state: {
         type: String,
+        required: true
+    },
+    zip: {
+        type: Number,
         required: true
     },
     date: {
@@ -28,13 +36,15 @@ const dateSchema = mongoose.Schema({
 dateSchema.methods.serialize = function() {
     return {
         id: this._id,
+        street: this.street,
         city: this.city,
-        parkName: this.parkName,
+        state: this.state,
+        zip: this.zip,
         date: this.date,
         time: this.time
     };
 };
 
-const Service = mongoose.model('Service', dateSchema);
+const Date = mongoose.model('Service', dateSchema);
 
 module.exports = {Date};

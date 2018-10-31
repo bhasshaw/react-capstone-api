@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 const cors = require('cors');
-
 const { router: usersRouter } = require('./users');
+const { router: dateRouter } = require('./dates');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 const {CLIENT_ORIGIN} = require('./config');
 
@@ -43,6 +43,7 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
+app.use('/api/dates/', dateRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
