@@ -39,6 +39,32 @@ router.post('/date', jwtAuth, jsonParser, (req, res) => {
 
 });
 
+router.put('/date/:id', jwtAuth, jsonParser, (req, res) => {
+    const requiredFields = ['street', 'city', 'state', 'zip', 'date', 'time'];
+    for (let i = 0; i < requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+        const message = `Missing \`${field}\` in request body`;
+        console.error(message);
+        return res.status(400).send(message);
+        }
+    }
+    const toUpdate = {
+        id: req.body.id,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        date: req.body.date,
+        time: req.body.time
+    };
+
+    Date
+        .findByIdAndUpdate(req.params.id, {$set: toUpdate})
+        .then(updatedDate => res.status(204).end())
+        .catch(err => res.status(500).json({ message: 'Something went wrong' }));
+});
+
 router.delete('/date/:id', jwtAuth, (req, res) => {
     Date
           .findByIdAndRemove(req.params.id)
