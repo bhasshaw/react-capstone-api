@@ -20,7 +20,6 @@ router.get('/date', jwtAuth, (req, res) => {
 });
 
 router.post('/date', jsonParser, (req, res) => {
-    console.log(req.body);
     const requiredFields = ['street', 'city', 'state', 'zip', 'date', 'time'];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
