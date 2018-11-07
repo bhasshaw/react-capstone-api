@@ -7,27 +7,19 @@ const dateSchema = mongoose.Schema({
     user: {
         type: String
     },
-    street: {
+    park: {
         type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    state: {
-        type: String,
-        required: true
-    },
-    zip: {
-        type: Number,
         required: true
     },
     date: {
         type: String,
         required: true
     },
-    time: {
+    startTime: {
+        type: String,
+        required: true
+    },
+    endTime: {
         type: String,
         required: true
     }
@@ -36,12 +28,10 @@ const dateSchema = mongoose.Schema({
 dateSchema.methods.serialize = function() {
     return {
         id: this._id,
-        street: this.street,
-        city: this.city,
-        state: this.state,
-        zip: this.zip,
+        park: this.park,
         date: this.date,
-        time: this.time
+        startTime: this.startTime,
+        endTime: this.endTime
     };
 };
 

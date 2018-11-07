@@ -20,7 +20,7 @@ router.get('/date', jwtAuth, (req, res) => {
 });
 
 router.post('/date', jsonParser, (req, res) => {
-    const requiredFields = ['street', 'city', 'state', 'zip', 'date', 'time'];
+    const requiredFields = ['park', 'date', 'startTime', 'endTime'];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
         if (!(field in req.body)) {
@@ -40,7 +40,7 @@ router.post('/date', jsonParser, (req, res) => {
 });
 
 router.put('/date/:id', jwtAuth, jsonParser, (req, res) => {
-    const requiredFields = ['street', 'city', 'state', 'zip', 'date', 'time'];
+    const requiredFields = ['park', 'date', 'startTime', 'endTime'];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
         if (!(field in req.body)) {
@@ -51,12 +51,10 @@ router.put('/date/:id', jwtAuth, jsonParser, (req, res) => {
     }
     const toUpdate = {
         id: req.body.id,
-        street: req.body.street,
-        city: req.body.city,
-        state: req.body.state,
-        zip: req.body.zip,
+        park: req.body.park,
         date: req.body.date,
-        time: req.body.time
+        startTime: req.body.startTime,
+        endTime: req.body.endTime
     };
 
     Date
