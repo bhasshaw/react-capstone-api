@@ -19,6 +19,18 @@ router.get('/date', jwtAuth, (req, res) => {
 		})
 });
 
+router.get('/date/:username', jwtAuth, (req, res) => {
+    Date
+        .find({user: req.params.user}).sort({'date': -1})
+        .then(dates => {
+            res.json(dates.map(date => date.serialize()));
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: 'Something went wrong' });
+        });
+});
+
 router.post('/date', jsonParser, (req, res) => {
     const requiredFields = ['park', 'date', 'startTime', 'endTime'];
     for (let i = 0; i < requiredFields.length; i++) {

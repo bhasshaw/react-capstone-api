@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const dateSchema = mongoose.Schema({
-    user: {
+    username: {
         type: String
     },
     park: {
@@ -35,6 +35,6 @@ dateSchema.methods.serialize = function() {
     };
 };
 
-const Date = mongoose.model('Service', dateSchema);
+const Date = mongoose.model('Date', dateSchema);
 
 module.exports = {Date};
