@@ -19,9 +19,10 @@ router.get('/date', jwtAuth, (req, res) => {
 		})
 });
 
-router.get('/date/:username', jwtAuth, (req, res) => {
+router.get('/date/:user', jwtAuth, (req, res) => {
     Date
-        .find({user: req.params.user}).sort({'date': -1})
+        .find({user: req.params.user})
+        // .sort({'date': -1})
         .then(dates => {
             res.json(dates.map(date => date.serialize()));
         })

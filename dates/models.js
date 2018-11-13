@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const dateSchema = mongoose.Schema({
-    username: {
+    user: {
         type: String
     },
     park: {
