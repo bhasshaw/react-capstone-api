@@ -28,6 +28,7 @@ const dateSchema = mongoose.Schema({
 dateSchema.methods.serialize = function() {
     return {
         id: this._id,
+        user: this.user,
         park: this.park,
         date: this.date,
         startTime: this.startTime,

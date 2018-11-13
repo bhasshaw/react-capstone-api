@@ -44,7 +44,14 @@ router.post('/date', jsonParser, (req, res) => {
     }
     Date
         .create(req.body)
-        .then( dateLog => res.status(201).json(dateLog.serialize()))
+        // const newDate = Date.create({
+        //     user: req.body.user,
+        //     park: req.body.park,
+        //     date: req.body.date,
+        //     startTime: req.body.startTime,
+        //     endTime: req.body.endTime
+        // })
+        .then( date => res.status(201).json(date.serialize()))
         .catch(err => {
             console.error(err);
             res.status(500).json({ error: 'Something went wrong' });
