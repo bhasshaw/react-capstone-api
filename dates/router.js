@@ -9,7 +9,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 
 router.get('/date', jwtAuth, (req, res) => {
     Date
-        .find(req.params)
+        .find(req.params).sort({'date': 1}).sort({'startTime': 1})
         .then(dates => {
             res.json(dates.map(date => date.serialize()));
         })
@@ -21,8 +21,7 @@ router.get('/date', jwtAuth, (req, res) => {
 
 router.get('/date/:user', jwtAuth, (req, res) => {
     Date
-        .find({user: req.params.user})
-        // .sort({'date': -1})
+        .find({user: req.params.user}).sort({'date': 1}).sort({'startTime': 1})
         .then(dates => {
             res.json(dates.map(date => date.serialize()));
         })
