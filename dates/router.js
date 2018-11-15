@@ -19,9 +19,9 @@ router.get('/date', jwtAuth, (req, res) => {
 		})
 });
 
-router.get('/date/:user', jwtAuth, (req, res) => {
+router.get('/date/:username', jwtAuth, (req, res) => {
     Date
-        .find({user: req.params.user}).sort({'date': 1}).sort({'startTime': 1})
+        .find({username: req.params.username}).sort({'date': 1}).sort({'startTime': 1})
         .then(dates => {
             res.json(dates.map(date => date.serialize()));
         })
@@ -43,13 +43,6 @@ router.post('/date', jsonParser, (req, res) => {
     }
     Date
         .create(req.body)
-        // const newDate = Date.create({
-        //     user: req.body.user,
-        //     park: req.body.park,
-        //     date: req.body.date,
-        //     startTime: req.body.startTime,
-        //     endTime: req.body.endTime
-        // })
         .then( date => res.status(201).json(date.serialize()))
         .catch(err => {
             console.error(err);
