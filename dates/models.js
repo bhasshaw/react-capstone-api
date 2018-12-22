@@ -23,7 +23,6 @@ const dateSchema = mongoose.Schema({
         type: String,
         required: true
     }
-    // date: { type: Date, default: new Date() }
 });
 
 dateSchema.methods.serialize = function() {
